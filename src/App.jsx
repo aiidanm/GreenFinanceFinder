@@ -85,7 +85,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(postcodeLookup[extractPostcode(enteredPostcode)]);
     if (enteredPostcode === "") {
     } else {
       const companyName = postcodeLookup[extractPostcode(enteredPostcode)];
@@ -111,16 +110,15 @@ function App() {
                   Go back
                 </button>
                 <h1 className="error-title">
-                  Unforutnatley you reside outside of our eligible area.
+                  Unforutnatley no credit union in your area currently offers a green finance loan, however it may be worth checking your employer.
                 </h1>
                 <h2 className="error-explanation">
-                  If you are interested in joining a credit union without the
-                  bus pass, please go to the link below to find one you are
+                  If you are interested in joining a credit union outside of a green finance loan, please go to the link below to find one you are
                   eligible for
                 </h2>
                 <button className="apply-button">
                   <a
-                    href="https://www.findyourcreditunion.co.uk"
+                    href={`https://www.findyourcreditunion.co.uk/search?Location=${parse(enteredPostcode).district}+${parse(enteredPostcode).incode}&EmploymentLocation=&EmploymentName=&Associations=`}
                     target="_blank"
                   >
                     Find your credit union
